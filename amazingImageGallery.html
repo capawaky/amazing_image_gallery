@@ -7,19 +7,18 @@
 			$(document).ready(function(){
 				$("#thumbs img").hover(function (){   				//$(selector).hover(inFunction,outFunction)
 					$("#largePhoto img").fadeOut(300);					
-					$("#largePhoto img").fadeIn(300);
-
+			
 					var savedThis = this; 							//pitää määritellä this muuttujaksi, muuten ei löydy
 					setTimeout(function(){
 						$("#largePhoto img").attr("src", $(savedThis).attr("src").replace("_thumb", "")); // "this" for 'current item in the loop' (jquery iterate child elements)
 					}, 300);
-					console.log("Pääseekö se tähän asti")
+					$("#largePhoto img").fadeIn(300);
 				}, function(){
-					$("#largePhoto img").clearQueue();
-					$("#largePhoto img").stop();
+					//$("#largePhoto img").clearQueue();
+					$("#largePhoto img").stop( true, true );
+					$("#largePhoto img").show();
 					//$("#largePhoto img").stop().animate({opacity:'50'});
-
-					console.log("Entä tänne")
+					
 					}
 				);
 				
