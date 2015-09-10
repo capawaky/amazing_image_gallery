@@ -1,53 +1,31 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html>
 	<head>
 	<meta charset="utf8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$("#thumbs img").hover(function (){   				//$(selector).hover(inFunction,outFunction)
-					$("#largePhoto img").fadeOut(300);					
-					$("#largePhoto img").fadeIn(300);
-
-					var savedThis = this; 							//pitää määritellä this muuttujaksi, muuten ei löydy
-					setTimeout(function(){
-						$("#largePhoto img").attr("src", $(savedThis).attr("src").replace("_thumb", "")); // "this" for 'current item in the loop' (jquery iterate child elements)
-					}, 300);
-					console.log("Pääseekö se tähän asti")
-				}, function(){
-					$("#largePhoto img").clearQueue();
-					$("#largePhoto img").stop();
-					//$("#largePhoto img").stop().animate({opacity:'50'});
-
-					console.log("Entä tänne")
-					}
-				);
-				
-
-
-			});
-		</script>
-		<style> 
-				img{
-						padding: 0px;
-						line-height:0px;
-						margin: 0px;
-						float: left;
-			}
-			</style>
+		<script src="gallery.js"></script>
+		<link rel="stylesheet" type="text/css" href="main.css">
 	</head>
 	<body>
-		<h1 style="text-align: center; font-family: 'Helvetica Neue', 'Lucida Grande';">Amazing Image Gallery</h1>
-		<h1>Master Branch</h1>
-		<div id="largePhoto" style="width: 50%; margin: 0 auto; background-color: white; height: 600px; width: 600px;">
+		<h1>Amazing Image Gallery</h1>
+		<!-- container for the main photo -->
+		<div id="largePhoto">
 			<img src="./images/1_tanssi.jpg"></div>
-		<div id="thumbs" style="width: 50%; margin: 0 auto; background-color: green; height: 150px; width: 600px;">
+		<!-- container for thumbnails -->
+		<div id="thumbs">
 			<img src="./images/1_tanssi_thumb.jpg">
 			<img src="./images/2_hemingway_thumb.jpg">
 			<img src="./images/3_baari_thumb.jpg">
-			<img src="./images/4_auto_thumb.jpg">
-			
+			<img src="./images/4_auto_thumb.jpg">		
 		</div>
-		<p style="font-family: 'Helvetica Neue', 'Lucida Grande'; font-size: 11px;"> © Carlos Kynäslahti 2015</p>
+		<p> © Carlos Kynäslahti 2015</p>
+		<!-- preloads photos for smoother mouse hover. image preloader from: https://perishablepress.com/a-way-to-preload-images-without-javascript-that-is-so-much-better/ -->
+		<div id="imageLoader">
+			<img src="./images/1_tanssi.jpg">
+			<img src="./images/2_hemingway.jpg">
+			<img src="./images/3_baari.jpg">
+			<img src="./images/4_auto.jpg">
+		</div>
 	</body>
 </html>
