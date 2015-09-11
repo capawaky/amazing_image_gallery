@@ -4,8 +4,65 @@
 	<head>
 	<meta charset="utf8">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script src="gallery.js"></script>
-		<link rel="stylesheet" type="text/css" href="main.css">
+		<script>
+
+			$(document).ready(function(){
+				// mouse hover over thumbnails
+				$("#thumbs img").hover(function (){   				
+					$("#largePhoto img").fadeOut(300);					
+					$("#largePhoto img").fadeIn(300);
+					var savedThis = this; 							
+					//removes "_thumb" from jpg filename and changes the main photo
+					setTimeout(function(){
+						$("#largePhoto img").attr("src", $(savedThis).attr("src").replace("_thumb", ""));
+						}, 300);
+				}, 	function(){
+					//clears animation queue to prevent it from looping when the cursor moves rapidly between thumbnails 
+					$("#largePhoto img").stop( true, true );
+					//prevents main photo from disappearing when the cursor leaves the thumbnail area quickly
+					$("#largePhoto img").show();					
+					}
+				);
+			});
+
+		</script>
+
+
+		<style>
+					img {
+				padding: 0px;
+				line-height:0px;
+				margin: 0px;
+				float: left;
+			}
+
+			h1 {
+				text-align: center; 
+				font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+			}
+
+			div#largePhoto {
+				margin: 0 auto; 
+				height: 600px; 
+				width: 600px;
+			}
+
+			div#thumbs {
+				width: 50%; 
+				margin: 0 auto;  
+				height: 150px; 
+				width: 600px;
+			}
+
+			div#imageLoader {
+				display: none;
+			}
+
+			p {
+				font-family: 'Helvetica Neue', 'Lucida Grande'; 
+				font-size: 11px;
+			}
+					</style>
 	</head>
 	<body>
 		<h1>Amazing Image Gallery</h1>
