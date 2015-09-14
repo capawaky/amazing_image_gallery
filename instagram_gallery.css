@@ -1,0 +1,43 @@
+img {
+    padding: 0px;
+    line-height:0px;
+    margin: 0px;
+    float: left;
+}
+
+h1 {
+    text-align: center; 
+    font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+}
+
+div#largePhoto {
+    margin: 0 auto; 
+    height: 600px; 
+    width: 600px;
+}
+
+div#thumbs {
+    width: 50%; 
+    margin: 0 auto;  
+   height: 150px; 
+    width: 600px;
+}
+
+div#thumbs img {
+    width:150px;
+    height:150px;
+}
+
+div#imageLoader {
+    display: none;
+}
+
+p {
+    font-family: 'Helvetica Neue', 'Lucida Grande'; 
+    font-size: 11px;
+}
+
+img#iso{
+    width:600px;
+    height:600px;
+}
