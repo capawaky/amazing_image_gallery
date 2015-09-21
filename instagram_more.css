@@ -26,7 +26,6 @@ div#thumbs {
 div#thumbs img {
     width:150px;
     height:150px;
-    align-items: stretch;
 }
 
 div#imageLoader {

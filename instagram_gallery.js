@@ -11,7 +11,7 @@ $(document).ready(function(){
         // loads initial photo to be displayed
         $("#iso").attr("src", data.data[0].images.standard_resolution.url ); 
         // loops to generate four thumbnail photos
-        for (i = 0; i < 4 ; i++){
+        for (i = 0; i <= 3 ; i++){
         $("#"+i).attr("src", data.data[i].images.low_resolution.url );
         }
         $("#thumbs img").hover(function (){   
