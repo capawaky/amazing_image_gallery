@@ -20,12 +20,13 @@ div#thumbs {
     width: 50%; 
     margin: 0 auto;  
    height: 150px; 
-    width: 600px;
+    width: 900px;
 }
 
 div#thumbs img {
     width:150px;
     height:150px;
+    overflow: hidden;
 }
 
 div#imageLoader {
@@ -40,4 +41,35 @@ p {
 img#iso{
     width:600px;
     height:600px;
+}
+
+#newPhoto:hover {
+    border-color: transparent #545657 transparent transparent;
+}
+
+#oldPhoto:hover {
+    border-color: transparent transparent transparent #545657;
+}
+
+.left-arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 75px 150px 75px 0;
+    border-color: transparent #c7c7c7 transparent transparent;
+    display: inline;
+}
+
+.right-arrow {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 75px 0 75px 150px;
+    border-color: transparent transparent transparent #c7c7c7;
+    display: inline;
+
+}
+
+.cf:after {
+    clear: both;
 }

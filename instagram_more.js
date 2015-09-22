@@ -21,7 +21,7 @@ $(document).ready(function(){
         // var start increases with each click, shows older thumbnails
         $("#oldPhoto").click(function(){
            if (start < 16) {
-            start = ++start; 
+            ++start; 
            } else {
             start = start;
            }
@@ -32,7 +32,7 @@ $(document).ready(function(){
         // var start decreases with each click, shows newer thumbnails
         $("#newPhoto").click(function(){
             if (start >= 1){
-                start = --start;
+                --start;
             } else {
                 start = start;
             }
