@@ -12,6 +12,7 @@ $(document).ready(function(){
         // loads initial photo to be displayed
         $("#largePhoto").attr("src", data.data[0].images.standard_resolution.url ); 
         $("#photoLink").attr("href", data.data[0].link );
+        $("#photoLink").attr("title", data.data[0].caption.text );
 
         // loops to generate four thumbnail photos
         start = 0; 
@@ -54,6 +55,8 @@ $(document).ready(function(){
                         console.log("This is id: " + $(savedThis).attr("id"))
                 $("#largePhoto").attr("src", data.data[parseInt($(savedThis).attr("id"))+ start ].images.standard_resolution.url);
                 $("#photoLink").attr("href", data.data[parseInt($(savedThis).attr("id"))+ start ].link );
+                $("#photoLink").attr("title", data.data[parseInt($(savedThis).attr("id"))+ start ].caption.text );
+
                 }, 300);
             },  function(){
             // when the cursors leaves a thumbnail, stops the animation and shows the main photo
