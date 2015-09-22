@@ -9,7 +9,7 @@ $(document).ready(function(){
 		dataType: 'jsonp'
 })
 	.done(function(data){
-        // loads initial photo to be displayed
+        // loads initial main photo, URL to Instagram and Instagram caption text
         $("#largePhoto").attr("src", data.data[0].images.standard_resolution.url ); 
         $("#photoLink").attr("href", data.data[0].link );
         $("#photoLink").attr("title", data.data[0].caption.text );
