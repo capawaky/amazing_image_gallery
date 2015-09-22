@@ -16,7 +16,7 @@ $(document).ready(function(){
         end = 3;
         images = data.data; 
         for (i = 0; i <= 3; i++){ 
-        $("#"+i).attr("src", images[i].images.low_resolution.url )
+        $("#"+i).attr("src", images[i].images.thumbnail.url )
         }
         // var start increases with each click, shows older thumbnails
         $("#oldPhoto").click(function(){
@@ -26,7 +26,7 @@ $(document).ready(function(){
             start = start;
            }
             for (i = 0; i <= 3; i++){ 
-                $("#"+i).attr("src", images[i+start].images.low_resolution.url )
+                $("#"+i).attr("src", images[i+start].images.thumbnail.url )
             }
         })
         // var start decreases with each click, shows newer thumbnails
@@ -37,7 +37,7 @@ $(document).ready(function(){
                 start = start;
             }
             for (i = 0; i <= 3; i++){ 
-                $("#"+i).attr("src", images[i+start].images.low_resolution.url )
+                $("#"+i).attr("src", images[i+start].images.thumbnail.url )
             }
         })
 
