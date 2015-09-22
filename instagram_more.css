@@ -10,9 +10,14 @@ h1 {
     font-family: 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
 }
 
-div#largePhoto {
+div.photoFrame {
     margin: 0 auto; 
     height: 600px; 
+    width: 600px;
+}
+
+img#largePhoto {
+    height: 600px;
     width: 600px;
 }
 

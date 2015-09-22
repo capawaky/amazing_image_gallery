@@ -10,7 +10,9 @@ $(document).ready(function(){
 })
 	.done(function(data){
         // loads initial photo to be displayed
-        $("#iso").attr("src", data.data[0].images.standard_resolution.url ); 
+        $("#largePhoto").attr("src", data.data[0].images.standard_resolution.url ); 
+        $("#photoLink").attr("href", data.data[0].link );
+
         // loops to generate four thumbnail photos
         start = 0; 
         end = 3;
@@ -43,19 +45,20 @@ $(document).ready(function(){
 
         $("#thumbs img").hover(function (){   
         // hover over thumbnails launches effects              
-            $("#largePhoto img").fadeOut(300);                  
-            $("#largePhoto img").fadeIn(300);
+            $("#largePhoto").fadeOut(300);                  
+            $("#largePhoto").fadeIn(300);
             // loads the main photo by combining id value with var start and fetching the sum from the array
             var savedThis = this;                           
             setTimeout(function(){
                         console.log("Start number:" + start)
                         console.log("This is id: " + $(savedThis).attr("id"))
-                $("#largePhoto img").attr("src", data.data[parseInt($(savedThis).attr("id"))+ start ].images.standard_resolution.url);
+                $("#largePhoto").attr("src", data.data[parseInt($(savedThis).attr("id"))+ start ].images.standard_resolution.url);
+                $("#photoLink").attr("href", data.data[parseInt($(savedThis).attr("id"))+ start ].link );
                 }, 300);
             },  function(){
             // when the cursors leaves a thumbnail, stops the animation and shows the main photo
-            $("#largePhoto img").stop( true, true );
-            $("#largePhoto img").show();                    
+            $("#largePhoto").stop( true, true );
+            $("#largePhoto").show();                    
             });
     }); 
 });
