@@ -1,7 +1,7 @@
 $(document).ready(function(){
     // uses https://instagram.com/developer/endpoints/users/#get_users_media_recent to get 4 most recent pictures from Instagram. requires a registered client & permission from user
     var url = "https://api.instagram.com/v1/users/1551735546/media/recent/?access_token=1551735546.4bf074c.c50158944161461cb019d912fa816df9" 
-    var images, start, end, i;
+    var images, index, i;
     $.ajax({
 		type: 'GET',
 		url: url,
@@ -34,32 +34,27 @@ $(document).ready(function(){
             .css({ top: mousey, left: mousex })
         });
         // loops to generate four thumbnail photos
-        start = 0; 
-        end = 3;
+        index = 0; 
         images = data.data; 
         for (i = 0; i <= 3; i++){ 
         $("#"+i).attr("src", images[i].images.thumbnail.url )
         }
-        // var start increases with each click, shows older thumbnails
+        // var index increases with each click, shows older thumbnails
         $("#oldPhoto").click(function(){
-           if (start < 16) {
-            ++start; 
-           } else {
-            start = start;
+           if (index < 16) {
+            ++index; 
            }
             for (i = 0; i <= 3; i++){ 
-                $("#"+i).attr("src", images[i+start].images.thumbnail.url )
+                $("#"+i).attr("src", images[i+index].images.thumbnail.url )
             }
         })
-        // var start decreases with each click, shows newer thumbnails
+        // var index decreases with each click, shows newer thumbnails 
         $("#newPhoto").click(function(){
-            if (start >= 1){
-                --start;
-            } else {
-                start = start;
-            }
+            if (index >= 1){
+                --index;
+             }
             for (i = 0; i <= 3; i++){ 
-                $("#"+i).attr("src", images[i+start].images.thumbnail.url )
+                $("#"+i).attr("src", images[i+index].images.thumbnail.url )
             }
         })
 
@@ -67,15 +62,14 @@ $(document).ready(function(){
         // hover over thumbnails launches effects              
             $("#largePhoto").fadeOut(300);                  
             $("#largePhoto").fadeIn(300);
-            // loads the main photo by combining id value with var start and fetching the sum from the array
-            var savedThis = this;                           
+            // loads the main photo by combining id value with var index and fetching the sum from the array
+            var elemId = this;                           
             setTimeout(function(){
-                        console.log("Start number:" + start)
-                        console.log("This is id: " + $(savedThis).attr("id"))
-                $("#largePhoto").attr("src", data.data[parseInt($(savedThis).attr("id"))+ start ].images.standard_resolution.url);
-                $("#photoLink").attr("href", data.data[parseInt($(savedThis).attr("id"))+ start ].link );
-                $("#photoLink").attr("title", data.data[parseInt($(savedThis).attr("id"))+ start ].caption.text );
-
+                        console.log("index number:" + index)
+                        console.log("This is id: " + $(elemId).attr("id"))
+                $("#largePhoto").attr("src", data.data[parseInt($(elemId).attr("id"))+ index ].images.standard_resolution.url);
+                $("#photoLink").attr("href", data.data[parseInt($(elemId).attr("id"))+ index ].link);
+                $("#photoLink").attr("title", data.data[parseInt($(elemId).attr("id"))+ index ].caption.text);
                 }, 300);
             },  function(){
             // when the cursors leaves a thumbnail, stops the animation and shows the main photo
