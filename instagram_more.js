@@ -13,7 +13,10 @@ $(document).ready(function(){
         $("#largePhoto").attr("src", data.data[0].images.standard_resolution.url ); 
         $("#photoLink").attr("href", data.data[0].link );
         $("#photoLink").attr("title", data.data[0].caption.text );
-
+        // tooltip from http://www.alessioatzeni.com/blog/simple-tooltip-with-jquery-only-text/ to display Instagram caption text
+        $("#photoLink").hover(function(){
+            var title = $(this).attr('title')
+        })
         // loops to generate four thumbnail photos
         start = 0; 
         end = 3;
