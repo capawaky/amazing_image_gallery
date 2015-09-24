@@ -2,6 +2,7 @@ $(document).ready(function(){
     // uses https://instagram.com/developer/endpoints/users/#get_users_media_recent to get 4 most recent pictures from Instagram. requires a registered client & permission from user
     var url = "https://api.instagram.com/v1/users/1551735546/media/recent/?access_token=1551735546.4bf074c.c50158944161461cb019d912fa816df9" 
     var instagramData, index, i;
+    var  DEBUG = true;
     $.ajax({
 		type: 'GET',
 		url: url,
@@ -10,6 +11,13 @@ $(document).ready(function(){
 })
 	.done(function(data){
         instagramData = data.data; 
+
+        // var imgArray;
+        // for (i = 0; i <= instagramData.length; i++){
+        //     var image = new Image();
+        //         image.src = data.data[i]
+        //         imgArray.push( image );
+        // }
         // loads initial main photo, URL to Instagram and Instagram caption text
         $("#largePhoto").attr("src", instagramData[0].images.standard_resolution.url ); 
         $("#photoLink").attr("href", instagramData[0].link );
@@ -26,7 +34,7 @@ $(document).ready(function(){
         }, function () {
             $('this').attr('title', $(this).data('tipText'));
             $('.tooltip').remove();
-            $("#photoLink").attr("title", instagramData[0].caption.text );
+            $("#photoLink").attr("title", $(this).data('tipText') );
         // captures mouse position on screen 
         }).mousemove(function(e){
             var mousex = e.pageX + 10; 
@@ -60,8 +68,10 @@ $(document).ready(function(){
             // loads the main photo by combining id value with var index and fetching the sum from the array
             var elemId = this;                           
             setTimeout(function(){
-                        console.log("index number:" + index)
-                        console.log("This is id: " + $(elemId).attr("id"))
+                if (DEBUG){
+                    console.log("index number:" + index)
+                    console.log("This is id: " + $(elemId).attr("id"))
+                }
                 $("#largePhoto").attr("src", instagramData[parseInt($(elemId).attr("id"))+ index ].images.standard_resolution.url);
                 $("#photoLink").attr("href", instagramData[parseInt($(elemId).attr("id"))+ index ].link);
                 $("#photoLink").attr("title", instagramData[parseInt($(elemId).attr("id"))+ index ].caption.text);
