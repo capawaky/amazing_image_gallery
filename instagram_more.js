@@ -34,29 +34,43 @@ $(document).ready(function(){
             .css({ top: mousey, left: mousex })
         });
         // loops to generate four thumbnail photos
+
         index = 0; 
         images = data.data; 
         for (i = 0; i <= 3; i++){ 
         $("#"+i).attr("src", images[i].images.thumbnail.url )
         }
         // var index increases with each click, shows older thumbnails
-        $("#oldPhoto").click(function(){
-           if (index < 16) {
+        
+
+
+
+        $(".navigation").click(function(){
+           if ($(this).attr("id") == $("#oldPhoto").prop("id") && index < 16) {
             ++index; 
+            //console.log($(this).attr("id") + " " + $("#oldPhoto").prop("id"))
+           } else if ($(this).attr("id") == $("#newPhoto").prop("id") && index >= 1) {
+            --index;
+            console.log("New photo this:" + $(this))
            }
             for (i = 0; i <= 3; i++){ 
                 $("#"+i).attr("src", images[i+index].images.thumbnail.url )
             }
         })
+
+
+
+
+
         // var index decreases with each click, shows newer thumbnails 
-        $("#newPhoto").click(function(){
-            if (index >= 1){
-                --index;
-             }
-            for (i = 0; i <= 3; i++){ 
-                $("#"+i).attr("src", images[i+index].images.thumbnail.url )
-            }
-        })
+        // $("#newPhoto").click(function(){
+        //     if (index >= 1){
+        //         --index;
+        //      }
+        //     for (i = 0; i <= 3; i++){ 
+        //         $("#"+i).attr("src", images[i+index].images.thumbnail.url )
+        //     }
+        // })
 
         $("#thumbs img").hover(function (){   
         // hover over thumbnails launches effects              
