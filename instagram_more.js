@@ -42,9 +42,9 @@ $(document).ready(function(){
         }
         // clicks on navigation buttons reduce or increase index number to receive a new array
         $(".navigation").click(function(){
-           if ($(this).attr("id") == $("#oldPhoto").prop("id") && index < 16) {
+           if ($(this).attr("id") == "oldPhoto" && index < 16) {
             ++index; 
-           } else if ($(this).attr("id") == $("#newPhoto").prop("id") && index >= 1) {
+           } else if ($(this).attr("id") == "newPhoto" && index >= 1) {
             --index;
            }
             for (i = 0; i <= 3; i++){ 
