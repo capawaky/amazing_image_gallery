@@ -11,13 +11,14 @@ $(document).ready(function(){
 })
 	.done(function(data){
         instagramData = data.data; 
-
-        // var imgArray;
-        // for (i = 0; i <= instagramData.length; i++){
-        //     var image = new Image();
-        //         image.src = data.data[i]
-        //         imgArray.push( image );
-        // }
+        // preloads all 20 standard resolution photos
+        var imgArray = [];
+        for (i = 0; i < instagramData.length; i++){
+            var image = new Image();
+            //console.log(instagramData[i]);
+            image.src = instagramData[i].images.standard_resolution.url;
+            imgArray.push( image );
+        }
         // loads initial main photo, URL to Instagram and Instagram caption text
         $("#largePhoto").attr("src", instagramData[0].images.standard_resolution.url ); 
         $("#photoLink").attr("href", instagramData[0].link );
