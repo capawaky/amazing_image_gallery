@@ -15,6 +15,7 @@ I made it to display some of my Instagram pictures. It displays one 600px main p
 Licensed under the MIT License:
 http://opensource.org/licenses/MIT
 
-© Carlos Kynäslahti 2015
-https://github.com/capawaky/amazing_image_gallery
-http://www.capawaky.com
+© Carlos Kynäslahti 2015-2017
+
+Visit my awesome website:
+http://www.carlospwk.com
